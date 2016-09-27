@@ -1,5 +1,5 @@
 # Load JKT_CYCLE functions
-source("/home/users/jmehtone/JTK_cycle/JTK_CYCLEv3.1.R")
+source("JTK_cycle/JTK_CYCLEv3.1.R")
 
 setwd("/home/work/public/biowhat/circadian/")
 
@@ -36,7 +36,6 @@ save(results,file=paste("JTK",project,"rda",sep="."))
 write.table(results,file=paste("JTK",project,"txt",sep="."),row.names=F,col.names=T,quote=F,sep="\t")
 
 
-
 library(ggplot2)
 for(i in 70:80) {
   probe = rownames(results)[i]
@@ -44,6 +43,3 @@ for(i in 70:80) {
   x = seq_along(y)
   print(qplot(x = x,y = y, geom = "path"))
 }
-
-
-

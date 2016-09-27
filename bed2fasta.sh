@@ -5,7 +5,7 @@
 # Jun 2016, Juha Mehtonen
 #
 # Usage: sh bed2fasta.sh [bed-file] [ref genome]
-# Example: sh getPeakSequences.sh example.bed mm9
+# Example: sh bed2fasta.sh example.bed mm9
 # Output: [bed-file].fa
 #
 
