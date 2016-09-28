@@ -2,7 +2,7 @@
 #
 # Get DNA sequences from reference genome matching bed-file
 #
-# Jun 2016, Juha Mehtonen
+# Sep 2016, Juha Mehtonen
 #
 # Usage: sh bed2fasta.sh [bed-file] [ref genome]
 # Example: sh bed2fasta.sh example.bed mm9
@@ -31,10 +31,6 @@ fi
 
 REFFA=$GPATH$GSPEC"/"$GVER"/"$REF"/Sequence/WholeGenomeFasta/genome.fa"
 
-# Sort
-sort -k1,1 -k2,2n $BED | uniq > $BED".sorted"
-
 # Get DNA sequence
-bedtools getfasta -fi $REFFA -bed $BED".sorted" -fo $BED".fa"
+bedtools getfasta -fi $REFFA -bed $BED -fo $BED".fa"
 
-rm -f $BED".sorted"
