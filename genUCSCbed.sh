@@ -1,15 +1,18 @@
 #!/bin/bash
 #
-# Apr 2016, Juha Mehtonen
+# Dec 2017, Juha Mehtonen
 #
 #
 
-cd $1
+folder=$(readlink -f $1)
+cd $folder
 
-for file in $1/*; do
+for file in $folder/*; do
   [ -f "${file}" ] || continue
   f="$(basename "${file}")"
-  cp $f tmp.bed
-  cut -f1-6 tmp.bed | sed "1 i\track name=\"${f}\" description=\"${f}\"" > $f
-  rm tmp.bed
+  if [[ $f == *.bed ]] && [[ ! $(head -1 $f) =~ "track name=" ]]
+  then
+    echo "$f --> $f.viz"
+    awk -v OFS='\t' '{print $1,$2,$3,$4,'0',$6}' $f | sed "1 i\track name=\"${f}\" description=\"${f}\"" > $f".viz"
+  fi
 done

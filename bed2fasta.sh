@@ -14,7 +14,7 @@ BED=$1
 REF=$2
 GVER="UCSC"
 
-GPATH="/home/work/public/iGenomes/"
+GPATH="/research/groups/biowhat_share/iGenomes/"
 
 if [ $REF = "hg19" ]
 then
